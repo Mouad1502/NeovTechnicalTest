@@ -26,7 +26,6 @@ Neov Chatbot is a **Retrieval-Augmented Generation (RAG)** system designed to an
 │── 📁 static                # Frontend (HTML, CSS, JS)
 │   ├── index.html           # Chat UI
 │   ├── style.css            # UI styling
-│   ├── script.js            # Handles user input & API calls
 │── 📁 documents             # Reference documents (PDFs & TXT)
 │── 📄 server.py             # FastAPI backend (BM25, FAISS, API)
 │── 📄 requirements.txt      # Python dependencies
