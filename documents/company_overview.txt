@@ -1,0 +1,17 @@
+NEOV is an innovative startup specializing in artificial intelligence (AI) and automation solutions. Founded in 2025 by Ismail El Jamali, NEOV aims to revolutionize the finance sector by introducing AI-powered tools that enhance operational efficiency and accuracy.
+
+**Mission Statement:**
+To empower financial institutions with cutting-edge AI technologies, streamlining processes and driving growth.
+
+**Services:**
+- **AI Agents for Financial Analysis:** Deploying intelligent agents that can analyze market trends and financial data in real-time.
+- **Process Automation:** Automating routine tasks to reduce manual intervention and increase productivity.
+- **Custom AI Solutions:** Tailoring AI applications to meet specific client needs within the finance industry.
+
+**Achievements:**
+- Developed a proprietary AI algorithm that reduced fraud detection time by 40%.
+- Partnered with leading banks to implement AI-driven customer service chatbots.
+
+**Future Goals:**
+- Expand AI services to other sectors such as healthcare and logistics.
+- Invest in research and development to stay ahead in AI innovation.
