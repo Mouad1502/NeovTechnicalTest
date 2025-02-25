@@ -6,9 +6,9 @@ import os
 from dotenv import load_dotenv
 import faiss
 import numpy as np
-from langchain.document_loaders import PyPDFLoader, TextLoader
-from langchain.embeddings import HuggingFaceEmbeddings
-from langchain.vectorstores import FAISS
+from langchain_community.document_loaders import PyPDFLoader, TextLoader
+from langchain_huggingface import HuggingFaceEmbeddings
+from langchain_community.vectorstores import FAISS
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from rank_bm25 import BM25Okapi
 
@@ -58,8 +58,10 @@ def create_bm25_index(documents):
 
 # ✅ FAISS Vector Search
 def create_vector_store(documents):
-    embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
-    return FAISS.from_documents(documents, embeddings)
+    embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2", model_kwargs={"device": "cpu"})
+    vector_store = FAISS.from_documents(documents, embeddings)
+    return vector_store
+
 
 
 # ✅ Hybrid Retrieval (BM25 + FAISS)
@@ -75,7 +77,7 @@ def hybrid_retrieval(query, bm25, tokenized_corpus, vector_store, top_k=3):
 # ✅ Setup QA System
 def setup_qa_system():
     global documents, bm25, tokenized_corpus, vector_store
-    documents = load_and_chunk_documents()
+    documents = load_and_chunk_documents()[:50]
     bm25, tokenized_corpus = create_bm25_index(documents)
     vector_store = create_vector_store(documents)
     print("✅ Documents Loaded & Indexed Successfully!")
