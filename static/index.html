@@ -7,17 +7,18 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="chat-container">
-        <header>
-            <h2>Neov Chatbot</h2>
-        </header>
-        <div id="chat-box"></div>
-        <div class="chat-input">
-            <input type="text" id="user-input" placeholder="Type your message...">
-            <button onclick="sendMessage()">Send<i class="fa fa-paper-plane"></i></button>
+    <div class="background">
+        <div class="chat-container">
+            <header>
+                <h2>Neov Chatbot</h2>
+            </header>
+            <div id="chat-box"></div>
+            <div class="chat-input">
+                <input type="text" id="user-input" placeholder="Type your message...">
+                <button onclick="sendMessage()">Send<i class="fa fa-paper-plane"></i></button>
+            </div>
         </div>
     </div>
-
     <script>
         async function sendMessage() {
             let inputField = document.getElementById("user-input");
