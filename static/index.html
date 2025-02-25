@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="chat-container">
+        <header>
+            <h2>Neov Chatbot</h2>
+        </header>
+        <div id="chat-box"></div>
+        <div class="chat-input">
+            <input type="text" id="user-input" placeholder="Type your message...">
+            <button onclick="sendMessage()">Send<i class="fa fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <script>
+        async function sendMessage() {
+            let inputField = document.getElementById("user-input");
+            let chatBox = document.getElementById("chat-box");
+            let userMessage = inputField.value.trim();
+
+            if (!userMessage) return;
+
+            // Append user message to chat box
+            chatBox.innerHTML += `<div class="chat-message user-message"><span>${userMessage}</span></div>`;
+            inputField.value = "";
+            chatBox.scrollTop = chatBox.scrollHeight;
+
+            try {
+                let response = await fetch("/chat", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ question: userMessage })
+                });
+
+                let data = await response.json();
+                chatBox.innerHTML += `<div class="chat-message bot-message"><span>${data.response}</span></div>`;
+                chatBox.scrollTop = chatBox.scrollHeight;
+            } catch (error) {
+                chatBox.innerHTML += `<div class="chat-message error-message"><span>❌ Error: Could not connect to the server.</span></div>`;
+            }
+        }
+    </script>
+</body>
+</html>
